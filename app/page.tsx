@@ -5,12 +5,17 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import Link from "next/link";
+import { Home, Camera, Brush, Utensils, MoreHorizontal, Star } from "lucide-react";
+// import "slick-carousel/slick/slick.css";
+// import "slick-carousel/slick/slick-theme.css";
+import { Quote } from "lucide-react";
 
 export default function HomePage() {
   return (
-    <div>
-      {/* Full-Width Carousel (Outside the Container) */}
-      <div className="relative w-full h-[500px]">
+    <div className="py-4">
+      {/* Responsive Full-Width Carousel with Rounded Corners */}
+      <div className="relative w-full h-[250px] md:h-[400px] lg:h-[500px] rounded-2xl overflow-hidden">
         <Swiper
           modules={[Autoplay, Pagination, Navigation]}
           spaceBetween={0}
@@ -26,9 +31,9 @@ export default function HomePage() {
               <img
                 src="/images/carousal/1.webp"
                 alt="Wedding 1"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover rounded-2xl"
               />
-              <div className="absolute inset-0 bg-black bg-opacity-30"></div>
+              <div className="absolute inset-0 bg-black bg-opacity-30 rounded-2xl"></div>
             </div>
           </SwiperSlide>
           <SwiperSlide>
@@ -36,9 +41,9 @@ export default function HomePage() {
               <img
                 src="/images/carousal/2.webp"
                 alt="Wedding 2"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover rounded-2xl"
               />
-              <div className="absolute inset-0 bg-black bg-opacity-30"></div>
+              <div className="absolute inset-0 bg-black bg-opacity-30 rounded-2xl"></div>
             </div>
           </SwiperSlide>
           <SwiperSlide>
@@ -46,27 +51,164 @@ export default function HomePage() {
               <img
                 src="/images/carousal/3.webp"
                 alt="Wedding 3"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover rounded-2xl"
               />
-              <div className="absolute inset-0 bg-black bg-opacity-30"></div>
+              <div className="absolute inset-0 bg-black bg-opacity-30 rounded-2xl"></div>
             </div>
           </SwiperSlide>
         </Swiper>
       </div>
 
-      <div className="w-full bg-gradient-to-r from-blue-700 to-blue-500 py-12 text-center text-white shadow-lg">
-        <h2 className="text-3xl md:text-4xl font-bold">Make Your Dream Wedding a Reality!</h2>
-        <p className="text-lg md:text-xl mt-2">Connect with top wedding vendors and plan your perfect day effortlessly.</p>
-        
-        <div className="mt-6 flex justify-center">
-          <a
-            href="tel:+919876543210"
-            className="bg-white text-blue-600 text-lg md:text-xl font-semibold px-8 py-4 rounded-lg shadow-xl hover:bg-gray-100 transition-transform transform hover:scale-105"
-          >
-            Call Now: +91 98765 43210
-          </a>
+      {/* Full-Width CTA Section */}
+      <div className="w-full py-6 md:py-8">
+        <a
+          href="tel:+919876543210"
+          className="block w-full bg-brand-interactive text-white text-lg md:text-xl font-semibold py-4 md:py-5 rounded-lg shadow-lg text-center hover:bg-alternative-interactiveDark transition-transform transform hover:scale-105"
+        >
+          Plan Your Wedding
+        </a>
+      </div>
+
+      {/* Categories Section - Now a Grid Layout */}
+      <div className="mt-4">
+        <h2 className="text-lg font-semibold text-text-primary mb-4">Explore Categories</h2>
+        <div className="grid grid-cols-3 md:grid-cols-6 gap-4">
+          <CategoryItem href="/venues" icon={<Home size={32} />} label="Venues" />
+          <CategoryItem href="/photographers" icon={<Camera size={32} />} label="Photographers" />
+          <CategoryItem href="/makeup-artists" icon={<Brush size={32} />} label="Makeup Artists" />
+          <CategoryItem href="/caterers" icon={<Utensils size={32} />} label="Caterers" />
+          <CategoryItem href="/explore" icon={<MoreHorizontal size={32} />} label="Explore" />
         </div>
       </div>
+
+      {/* Popular Vendors Section */}
+      <div className="mt-10">
+        <h2 className="text-lg font-semibold text-text-primary mb-4">Popular & Recommended Vendors</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <VendorCard
+            image="/images/vendors/vendor1.webp"
+            name="Rajgharana Resorts"
+            category="Venue"
+            rating={5}
+          />
+          {/* <VendorCard
+            image="/images/vendors/vendor2.webp"
+            name="Royal Photography"
+            category="Photographer"
+            rating={4.8}
+          />
+          <VendorCard
+            image="/images/vendors/vendor3.webp"
+            name="Glamour Makeup Studio"
+            category="Makeup Artist"
+            rating={4.7}
+          /> */}
+        </div>
+      </div>
+
+      {/* User Testimonials Section */}
+      <div className="mt-10 py-12 bg-gradient-to-r from-background-main to-alternative-backgroundWarm rounded-2xl shadow-xl">
+        <h2 className="text-2xl font-bold text-center text-brand-secondary mb-6">What Our Clients Say</h2>
+        
+        <Swiper
+          modules={[Autoplay, Pagination]}
+          spaceBetween={20}
+          slidesPerView={1}
+          autoplay={{ delay: 5000, disableOnInteraction: false }}
+          pagination={{ clickable: true }}
+          loop={true}
+          className="w-full max-w-3xl mx-auto"
+        >
+          <SwiperSlide>
+            <TestimonialCard
+              name="Aarav & Meera"
+              image="/images/testimonials/user1.jpg"
+              review="Vivaahsaj made our dream wedding a reality! The vendors were exceptional, and everything was seamless."
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <TestimonialCard
+              name="Raj & Simran"
+              image="/images/testimonials/user2.jpg"
+              review="From photographers to decorators, every vendor we booked through Vivaahsaj was top-notch. Highly recommend!"
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <TestimonialCard
+              name="Kabir & Aisha"
+              image="/images/testimonials/user3.jpg"
+              review="Luxury and perfection define Vivaahsaj! The customer support was phenomenal, and the entire planning process was stress-free."
+            />
+          </SwiperSlide>
+        </Swiper>
+      </div>
+    </div>
+  );
+}
+
+/* Category Item Component */
+function CategoryItem({ href, icon, label }: { href: string; icon: React.ReactNode; label: string }) {
+  return (
+    <Link
+      href={href}
+      className="flex flex-col items-center justify-center min-w-[100px] p-5 rounded-xl shadow-lg border border-brand-primary 
+      bg-gradient-to-r from-brand-primary to-alternative-primaryLight text-white 
+      hover:scale-105 transition-transform duration-300 ease-in-out"
+    >
+      {icon}
+      <span className="mt-2 font-medium text-sm text-center whitespace-nowrap truncate">{label}</span>
+    </Link>
+  );
+}
+
+/* Vendor Card Component */
+function VendorCard({ image, name, category, rating }: { image: string; name: string; category: string; rating: number }) {
+  return (
+    <div className="relative bg-gradient-to-r from-background-main to-alternative-backgroundWarm rounded-2xl shadow-xl border-2 border-brand-primary p-5 transition-transform hover:scale-105 duration-300 ease-in-out">
+      {/* Vendor Image with Gold Overlay */}
+      <div className="relative w-full h-52 rounded-xl overflow-hidden">
+        <img src={image} alt={name} className="w-full h-full object-cover rounded-xl" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-30 rounded-xl"></div>
+      </div>
+
+      {/* Vendor Details */}
+      <h3 className="text-xl font-bold text-brand-secondary mt-4">{name}</h3>
+      <p className="text-sm text-text-secondary italic">{category}</p>
+
+      {/* Star Ratings - Gold & Elegant */}
+      <div className="flex items-center mt-2">
+        {Array.from({ length: 5 }, (_, i) => (
+          <Star key={i} size={20} className={i < Math.round(rating) ? "text-brand-primary" : "text-utility-lightGray"} />
+        ))}
+        <span className="ml-2 text-lg font-semibold text-brand-primary">{rating}</span>
+      </div>
+
+      {/* Call to Action */}
+      <button className="mt-4 w-full bg-brand-primary text-white py-2 rounded-lg font-semibold shadow-md hover:bg-alternative-primaryDark transition">
+        View Profile
+      </button>
+    </div>
+  );
+}
+
+
+/* Testimonial Card Component */
+function TestimonialCard({ name, image, review }: { name: string; image: string; review: string }) {
+  return (
+    <div className="flex flex-col items-center text-center p-6 mx-4 rounded-2xl shadow-lg bg-background-card border border-brand-primary hover:scale-105 transition-transform duration-300">
+      {/* Quote Icon */}
+      <Quote size={40} className="text-brand-primary mb-2" />
+
+      {/* User Image */}
+      <div className="w-16 h-16 border-4 border-brand-primary rounded-full overflow-hidden shadow-lg">
+        <img src={image} alt={name} className="w-full h-full object-cover" />
+      </div>
+
+      {/* Review Text */}
+      <p className="mt-4 text-text-primary text-lg italic">"{review}"</p>
+
+      {/* User Name */}
+      <span className="mt-2 text-brand-secondary font-semibold">{name}</span>
     </div>
   );
 }
