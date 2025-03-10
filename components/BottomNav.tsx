@@ -20,7 +20,7 @@ export function BottomNav() {
   );
 }
 
-function NavItem({ href, icon: Icon, label, active }: { href: string; icon: any; label: string; active: boolean }) {
+function NavItem({ href, icon: Icon, label, active }: { href: string; icon: React.ElementType; label: string; active: boolean }) {
   return (
     <Link href={href} className={`flex flex-col items-center text-xs ${active ? "text-blue-600" : "text-gray-500 hover:text-gray-700"} transition`}>
       <Icon className="w-6 h-6 mb-1" />

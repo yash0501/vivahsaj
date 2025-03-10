@@ -10,6 +10,7 @@ import { Home, Camera, Brush, Utensils, MoreHorizontal, Star } from "lucide-reac
 // import "slick-carousel/slick/slick.css";
 // import "slick-carousel/slick/slick-theme.css";
 import { Quote } from "lucide-react";
+import Image from "next/image";
 
 export default function HomePage() {
   return (
@@ -28,30 +29,36 @@ export default function HomePage() {
         >
           <SwiperSlide>
             <div className="relative w-full h-full">
-              <img
+              <Image
                 src="/images/carousal/1.webp"
                 alt="Wedding 1"
-                className="w-full h-full object-cover rounded-2xl"
+                layout="fill"
+                objectFit="cover"
+                className="rounded-2xl"
               />
               <div className="absolute inset-0 bg-black bg-opacity-30 rounded-2xl"></div>
             </div>
           </SwiperSlide>
           <SwiperSlide>
             <div className="relative w-full h-full">
-              <img
+              <Image
                 src="/images/carousal/2.webp"
                 alt="Wedding 2"
-                className="w-full h-full object-cover rounded-2xl"
+                layout="fill"
+                objectFit="cover"
+                className="rounded-2xl"
               />
               <div className="absolute inset-0 bg-black bg-opacity-30 rounded-2xl"></div>
             </div>
           </SwiperSlide>
           <SwiperSlide>
             <div className="relative w-full h-full">
-              <img
+              <Image
                 src="/images/carousal/3.webp"
                 alt="Wedding 3"
-                className="w-full h-full object-cover rounded-2xl"
+                layout="fill"
+                objectFit="cover"
+                className="rounded-2xl"
               />
               <div className="absolute inset-0 bg-black bg-opacity-30 rounded-2xl"></div>
             </div>
@@ -122,21 +129,21 @@ export default function HomePage() {
           <SwiperSlide>
             <TestimonialCard
               name="Aarav & Meera"
-              image="/images/testimonials/user1.jpg"
+              image="/images/testimonials/image1.jpeg"
               review="Vivaahsaj made our dream wedding a reality! The vendors were exceptional, and everything was seamless."
             />
           </SwiperSlide>
           <SwiperSlide>
             <TestimonialCard
               name="Raj & Simran"
-              image="/images/testimonials/user2.jpg"
+              image="/images/testimonials/image2.jpg"
               review="From photographers to decorators, every vendor we booked through Vivaahsaj was top-notch. Highly recommend!"
             />
           </SwiperSlide>
           <SwiperSlide>
             <TestimonialCard
               name="Kabir & Aisha"
-              image="/images/testimonials/user3.jpg"
+              image="/images/testimonials/image3.jpg"
               review="Luxury and perfection define Vivaahsaj! The customer support was phenomenal, and the entire planning process was stress-free."
             />
           </SwiperSlide>
@@ -167,7 +174,7 @@ function VendorCard({ image, name, category, rating }: { image: string; name: st
     <div className="relative bg-gradient-to-r from-background-main to-alternative-backgroundWarm rounded-2xl shadow-xl border-2 border-brand-primary p-5 transition-transform hover:scale-105 duration-300 ease-in-out">
       {/* Vendor Image with Gold Overlay */}
       <div className="relative w-full h-52 rounded-xl overflow-hidden">
-        <img src={image} alt={name} className="w-full h-full object-cover rounded-xl" />
+        <Image src={image} alt={name} layout="fill" objectFit="cover" className="rounded-xl" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-30 rounded-xl"></div>
       </div>
 
@@ -199,13 +206,19 @@ function TestimonialCard({ name, image, review }: { name: string; image: string;
       {/* Quote Icon */}
       <Quote size={40} className="text-brand-primary mb-2" />
 
-      {/* User Image */}
-      <div className="w-16 h-16 border-4 border-brand-primary rounded-full overflow-hidden shadow-lg">
-        <img src={image} alt={name} className="w-full h-full object-cover" />
+      {/* User Image - Circular */}
+      <div className="w-16 h-16 aspect-square border-4 border-brand-primary rounded-full overflow-hidden shadow-lg relative">
+        <Image 
+          src={image} 
+          alt={name} 
+          width={64} 
+          height={64} 
+          className="rounded-full object-cover w-full h-full"
+        />
       </div>
 
       {/* Review Text */}
-      <p className="mt-4 text-text-primary text-lg italic">"{review}"</p>
+      <p className="mt-4 text-text-primary text-lg italic">&quot;{review}&quot;</p>
 
       {/* User Name */}
       <span className="mt-2 text-brand-secondary font-semibold">{name}</span>
