@@ -1,38 +1,52 @@
-import React from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
-import { BlogPost } from '@/lib/data';
+import Link from 'next/link';
 
-type BlogCardProps = {
-  post: BlogPost;
-};
+export interface BlogPost {
+  slug: string;
+  title: string;
+  date: string;
+  author: string;
+  excerpt: string;
+  coverImage: string;
+  content: string;
+}
 
-export default function BlogCard({ post }: BlogCardProps) {
+export function BlogCard({ post }: { post: BlogPost }) {
   return (
-    <Link 
-      href={`/blogs/${post.slug}`}
-      className="block bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
-    >
-      <div className="relative h-48 w-full">
-        <Image
-          src={post.coverImage}
-          alt={post.title}
-          fill
-          style={{ objectFit: 'cover' }}
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        />
-      </div>
-      <div className="p-6">
-        <h3 className="text-lg font-semibold mb-2">{post.title}</h3>
-        <p className="text-gray-600 mb-4">{post.excerpt}</p>
-        <div className="flex justify-between items-center text-sm text-gray-500">
-          <span>{post.author}</span>
-          <span>{new Date(post.date).toLocaleDateString()}</span>
+    <Link href={`/blogs/${post.slug}`} className="block">
+      <article className="bg-background-main rounded-lg overflow-hidden shadow-md transition-shadow hover:shadow-lg h-full">
+        <div className="relative w-full h-48">
+          <Image
+            src={post.coverImage}
+            alt={post.title}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
         </div>
-        <div className="mt-4 inline-block text-purple-600 font-medium">
-          Read More →
+        
+        <div className="p-6">
+          <h2 className="text-xl font-semibold mb-2 text-text-primary hover:text-brand-primary transition">
+            {post.title}
+          </h2>
+          
+          <div className="text-sm text-text-secondary mb-3">
+            {new Date(post.date).toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric'
+            })} • By {post.author}
+          </div>
+          
+          <p className="text-text-secondary mb-4 line-clamp-3">{post.excerpt}</p>
+          
+          <span 
+            className="text-brand-primary font-medium hover:text-brand-secondary transition inline-block"
+          >
+            Read more →
+          </span>
         </div>
-      </div>
+      </article>
     </Link>
   );
 }
