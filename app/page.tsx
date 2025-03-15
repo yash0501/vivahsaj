@@ -7,8 +7,6 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import Link from "next/link";
 import { Home, Camera, Brush, Utensils, MoreHorizontal, Star } from "lucide-react";
-// import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
 import { Quote } from "lucide-react";
 import Image from "next/image";
 
@@ -32,8 +30,8 @@ export default function HomePage() {
               <Image
                 src="/images/carousal/1.webp"
                 alt="Wedding 1"
-                layout="fill"
-                objectFit="cover"
+                fill
+                style={{ objectFit: "cover" }}
                 className="rounded-2xl"
               />
               <div className="absolute inset-0 bg-black bg-opacity-30 rounded-2xl"></div>
@@ -44,8 +42,8 @@ export default function HomePage() {
               <Image
                 src="/images/carousal/2.webp"
                 alt="Wedding 2"
-                layout="fill"
-                objectFit="cover"
+                fill
+                style={{ objectFit: "cover" }}
                 className="rounded-2xl"
               />
               <div className="absolute inset-0 bg-black bg-opacity-30 rounded-2xl"></div>
@@ -56,8 +54,8 @@ export default function HomePage() {
               <Image
                 src="/images/carousal/3.webp"
                 alt="Wedding 3"
-                layout="fill"
-                objectFit="cover"
+                fill
+                style={{ objectFit: "cover" }}
                 className="rounded-2xl"
               />
               <div className="absolute inset-0 bg-black bg-opacity-30 rounded-2xl"></div>
@@ -98,18 +96,6 @@ export default function HomePage() {
             category="Venue"
             rating={5}
           />
-          {/* <VendorCard
-            image="/images/vendors/vendor2.webp"
-            name="Royal Photography"
-            category="Photographer"
-            rating={4.8}
-          />
-          <VendorCard
-            image="/images/vendors/vendor3.webp"
-            name="Glamour Makeup Studio"
-            category="Makeup Artist"
-            rating={4.7}
-          /> */}
         </div>
       </div>
 
@@ -130,21 +116,21 @@ export default function HomePage() {
             <TestimonialCard
               name="Aarav & Meera"
               image="/images/testimonials/image1.jpeg"
-              review="Vivaahsaj made our dream wedding a reality! The vendors were exceptional, and everything was seamless."
+              review="Vivahsaj made our dream wedding a reality! The vendors were exceptional, and everything was seamless."
             />
           </SwiperSlide>
           <SwiperSlide>
             <TestimonialCard
               name="Raj & Simran"
               image="/images/testimonials/image2.jpg"
-              review="From photographers to decorators, every vendor we booked through Vivaahsaj was top-notch. Highly recommend!"
+              review="From photographers to decorators, every vendor we booked through Vivahsaj was top-notch. Highly recommend!"
             />
           </SwiperSlide>
           <SwiperSlide>
             <TestimonialCard
               name="Kabir & Aisha"
               image="/images/testimonials/image3.jpg"
-              review="Luxury and perfection define Vivaahsaj! The customer support was phenomenal, and the entire planning process was stress-free."
+              review="Luxury and perfection define Vivahsaj! The customer support was phenomenal, and the entire planning process was stress-free."
             />
           </SwiperSlide>
         </Swiper>
@@ -174,7 +160,13 @@ function VendorCard({ image, name, category, rating }: { image: string; name: st
     <div className="relative bg-gradient-to-r from-background-main to-alternative-backgroundWarm rounded-2xl shadow-xl border-2 border-brand-primary p-5 transition-transform hover:scale-105 duration-300 ease-in-out">
       {/* Vendor Image with Gold Overlay */}
       <div className="relative w-full h-52 rounded-xl overflow-hidden">
-        <Image src={image} alt={name} layout="fill" objectFit="cover" className="rounded-xl" />
+        <Image 
+          src={image} 
+          alt={name} 
+          fill
+          style={{ objectFit: "cover" }}
+          className="rounded-xl" 
+        />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-30 rounded-xl"></div>
       </div>
 

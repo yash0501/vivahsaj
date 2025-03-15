@@ -10,21 +10,35 @@ export function Navbar() {
   return (
     <>
       {/* Top Navbar */}
-      <nav className="bg-brand-secondary text-background-main shadow-md sticky top-0 z-50">
+      <nav className="bg-background-main text-text-primary shadow-md sticky top-0 z-50">
         <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-          <Link href="/" className="text-2xl font-bold text-brand-primary">
-            Vivaahsaj
-          </Link>
-          <div className="hidden md:flex space-x-6">
-            <NavLink href="/vendors" label="Vendors" />
-            <NavLink href="/bookings" label="Bookings" />
-            <NavLink href="/about" label="About" />
-            <NavLink href="/contact" label="Contact" />
+          {/* Left section - Only visible on desktop */}
+          <div className="hidden md:block w-1/3">
+            <div className="flex space-x-6">
+              <NavLink href="/vendors" label="Vendors" />
+              <NavLink href="/bookings" label="Bookings" />
+            </div>
           </div>
+          
+          {/* Center section - Logo */}
+          <div className="flex-1 md:flex-none text-center">
+            <Link href="/" className="text-2xl font-bold text-brand-primary inline-block">
+              Vivahsaj
+            </Link>
+          </div>
+          
+          {/* Right section - Only visible on desktop */}
+          <div className="hidden md:block w-1/3">
+            <div className="flex space-x-6 justify-end">
+              <NavLink href="/about" label="About" />
+              <NavLink href="/contact" label="Contact" />
+            </div>
+          </div>
+          
           {/* Mobile Menu Button */}
           <div className="md:hidden">
             <button onClick={() => setIsOpen(true)}>
-              <Menu className="w-6 h-6 text-background-main" />
+              <Menu className="w-6 h-6 text-text-primary" />
             </button>
           </div>
         </div>
@@ -62,7 +76,7 @@ function NavLink({ href, label }: { href: string; label: string }) {
   return (
     <Link
       href={href}
-      className="text-brand-secondary hover:text-brand-primary transition font-medium"
+      className="text-text-primary hover:text-brand-primary transition font-medium"
     >
       {label}
     </Link>
