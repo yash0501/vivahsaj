@@ -8,7 +8,7 @@ export function BottomNav() {
   const pathname = usePathname(); // Get the current route
 
   return (
-    <nav className="md:hidden fixed bottom-0 left-0 w-full bg-white shadow-lg border-t border-gray-200">
+    <nav className="md:hidden fixed bottom-0 left-0 w-full bg-white shadow-lg border-t border-gray-200 z-50">
       <div className="flex justify-between items-center px-4 py-2">
         <NavItem href="/" icon={Home} label="Home" active={pathname === "/"} />
         <NavItem href="/explore" icon={Compass} label="Explore" active={pathname === "/explore"} />
