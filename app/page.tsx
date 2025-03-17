@@ -6,7 +6,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import Link from "next/link";
-import { Home, Camera, Brush, Utensils, MoreHorizontal, Star } from "lucide-react";
+import { Home, Camera, Brush, Utensils, MoreHorizontal, Star, Calendar } from "lucide-react";
 import { Quote } from "lucide-react";
 import Image from "next/image";
 
@@ -86,6 +86,51 @@ export default function HomePage() {
         </div>
       </div>
 
+      {/* Wedding Ceremonies Guide - NEW SECTION */}
+      <div className="mt-10">
+        <h2 className="text-lg font-semibold text-text-primary mb-4">Indian Wedding Ceremonies</h2>
+        <Swiper
+          modules={[Autoplay, Pagination]}
+          spaceBetween={16}
+          slidesPerView={1.2}
+          autoplay={{ delay: 4000, disableOnInteraction: false }}
+          pagination={{ clickable: true }}
+          loop={true}
+          breakpoints={{
+            640: { slidesPerView: 2.2 },
+            1024: { slidesPerView: 3.2 }
+          }}
+          className="pb-10"
+        >
+          {[
+            { name: "Haldi", image: "/images/carousal/1.webp", description: "Turmeric ceremony to bless the couple" },
+            { name: "Sangeet", image: "/images/carousal/2.webp", description: "Music and dance celebration" },
+            { name: "Mehndi", image: "/images/carousal/3.webp", description: "Artistic henna application" },
+            { name: "Baraat", image: "/images/carousal/1.webp", description: "Groom's procession to the venue" },
+            { name: "Pheras", image: "/images/carousal/2.webp", description: "Sacred vows around the fire" },
+            { name: "Vidaai", image: "/images/carousal/3.webp", description: "Bride's farewell from her family" }
+          ].map((ceremony, index) => (
+            <SwiperSlide key={index}>
+              <Link href={`/traditions/${ceremony.name.toLowerCase()}`}>
+                <div className="relative h-56 rounded-xl overflow-hidden border-2 border-brand-primary shadow-lg hover:shadow-xl transition-transform transform hover:scale-105">
+                  <Image 
+                    src={ceremony.image} 
+                    alt={ceremony.name}
+                    fill 
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
+                  <div className="absolute bottom-0 left-0 w-full p-4 text-white">
+                    <h3 className="text-xl font-bold mb-1">{ceremony.name}</h3>
+                    <p className="text-sm opacity-90">{ceremony.description}</p>
+                  </div>
+                </div>
+              </Link>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+
       {/* Popular Vendors Section */}
       <div className="mt-10">
         <h2 className="text-lg font-semibold text-text-primary mb-4">Popular & Recommended Vendors</h2>
@@ -96,6 +141,35 @@ export default function HomePage() {
             category="Venue"
             rating={5}
           />
+        </div>
+      </div>
+
+      {/* Auspicious Wedding Dates - NEW SECTION */}
+      <div className="mt-10 p-6 bg-gradient-to-r from-background-main to-alternative-backgroundWarm rounded-2xl shadow-xl border-2 border-brand-primary">
+        <h2 className="text-lg font-semibold text-text-primary mb-4">Auspicious Wedding Dates</h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {[
+            { month: "November 2023", dates: ["15", "18", "23", "27"] },
+            { month: "December 2023", dates: ["3", "7", "11", "15"] },
+            { month: "January 2024", dates: ["10", "15", "21", "29"] },
+            { month: "February 2024", dates: ["2", "8", "14", "21"] }
+          ].map((monthData, index) => (
+            <div key={index} className="bg-background-card rounded-lg shadow-md p-4 border border-brand-primary">
+              <h3 className="text-lg font-bold text-brand-primary text-center mb-3">{monthData.month}</h3>
+              <div className="grid grid-cols-2 gap-2">
+                {monthData.dates.map((date) => (
+                  <div key={date} className="bg-brand-primary bg-opacity-10 rounded-md p-2 text-center">
+                    <span className="font-semibold">{date}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="text-center mt-6">
+          <Link href="/muhurat" className="inline-block px-6 py-2 bg-brand-primary text-white rounded-lg font-semibold shadow-md hover:bg-alternative-primaryDark transition-transform transform hover:scale-105">
+            View Complete Calendar <Calendar size={16} className="inline ml-1" />
+          </Link>
         </div>
       </div>
 
@@ -134,6 +208,47 @@ export default function HomePage() {
             />
           </SwiperSlide>
         </Swiper>
+      </div>
+
+      {/* Wedding Planning Tips - NEW SECTION */}
+      <div className="mt-10">
+        <h2 className="text-lg font-semibold text-text-primary mb-4">Wedding Planning Tips</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <Link href="/blogs/budget-planning">
+            <div className="bg-background-card rounded-xl overflow-hidden shadow-lg border border-brand-primary hover:shadow-xl transition-transform transform hover:scale-105">
+              <div className="relative h-48">
+                <Image 
+                  src="/images/carousal/1.webp" 
+                  alt="Budget Planning" 
+                  fill 
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-5">
+                <h3 className="text-xl font-bold mb-2 text-brand-primary">Wedding Budget Planning</h3>
+                <p className="text-text-secondary mb-4">Essential tips to manage your wedding expenses while maintaining the royal experience.</p>
+                <span className="text-brand-secondary font-medium">Read more →</span>
+              </div>
+            </div>
+          </Link>
+          <Link href="/blogs/vendor-selection">
+            <div className="bg-background-card rounded-xl overflow-hidden shadow-lg border border-brand-primary hover:shadow-xl transition-transform transform hover:scale-105">
+              <div className="relative h-48">
+                <Image 
+                  src="/images/carousal/2.webp" 
+                  alt="Vendor Selection" 
+                  fill 
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-5">
+                <h3 className="text-xl font-bold mb-2 text-brand-primary">Finding the Perfect Vendors</h3>
+                <p className="text-text-secondary mb-4">How to select vendors that align with your vision for a premium Indian wedding.</p>
+                <span className="text-brand-secondary font-medium">Read more →</span>
+              </div>
+            </div>
+          </Link>
+        </div>
       </div>
     </div>
   );
