@@ -194,7 +194,7 @@ function VendorCard({ image, name, category, rating }: { image: string; name: st
 /* Testimonial Card Component */
 function TestimonialCard({ name, image, review }: { name: string; image: string; review: string }) {
   return (
-    <div className="flex flex-col items-center text-center p-6 mx-4 rounded-2xl shadow-lg bg-background-card border border-brand-primary hover:scale-105 transition-transform duration-300">
+    <div className="flex flex-col items-center text-center p-6 mx-4 rounded-2xl shadow-lg bg-background-card border border-brand-primary hover:scale-105 transition-transform duration-300" style={{ zIndex: 0 }}>
       {/* Quote Icon */}
       <Quote size={40} className="text-brand-primary mb-2" />
 
