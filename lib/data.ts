@@ -547,3 +547,56 @@ export function getAllBlogPosts(): BlogPost[] {
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
   return blogPosts.find(post => post.slug === slug);
 }
+
+export interface Category {
+  id: string;
+  name: string;
+  description: string;
+  image: string;
+  route: string;
+}
+
+export const weddingCategories: Category[] = [
+  {
+    id: "venues",
+    name: "Venues",
+    description: "Find perfect venues for your wedding ceremony and reception",
+    image: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    route: "/explore/venues",
+  },
+  {
+    id: "catering",
+    name: "Catering",
+    description: "Discover delicious food and beverage options",
+    image: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    route: "/explore/catering",
+  },
+  {
+    id: "photography",
+    name: "Photography",
+    description: "Capture your special moments with professional photographers",
+    image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    route: "/explore/photography",
+  },
+  {
+    id: "decoration",
+    name: "Decoration",
+    description: "Beautiful decoration themes and services",
+    image: "https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    route: "/explore/decoration",
+  },
+  {
+    id: "makeup",
+    name: "Makeup & Beauty",
+    description: "Look your best with professional makeup artists",
+    image: "https://images.unsplash.com/photo-1457972729786-0411a3b2b626?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    route: "/explore/makeup",
+  },
+  {
+    id: "music",
+    name: "Music & Entertainment",
+    description: "Add life to your celebration with entertainment options",
+    image: "https://images.unsplash.com/photo-1506157786151-b8491531f063?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    route: "/explore/music",
+  },
+];
